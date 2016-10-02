@@ -1,3 +1,14 @@
 <template name="Recipes">
-  {{> NewRecipe}}
+  {{#if $.Session.get 'newRecipe'}}
+    {{> NewRecipe}}
+  {{else}}
+    <button class="new-recipe">Nova Receita</button>
+  {{/if}}
+  <section class="recipes">
+    {{#if Template.subscriptionsReady}}
+      {{#each recipes}}
+        {{> Recipe}}
+      {{/each}}
+    {{/if}}
+  </section>
 </template>
